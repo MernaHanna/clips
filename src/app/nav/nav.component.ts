@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
   constructor(public modal: ModalService){}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
 
   openModal($event: Event): void {
