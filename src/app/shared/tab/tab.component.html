@@ -1,1 +1,5 @@
-<ng-content></ng-content>
+<!-- may use tailwind's hidden class dynamically instead -->
+<!-- this method is to access the active property of the hidden class directly -->
+<div [class.hidden]="!active">
+    <ng-content></ng-content>
+</div>
