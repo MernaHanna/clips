@@ -8,11 +8,11 @@
                 duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
             placeholder="Enter Name"/>
             <!-- use html5 minlength="3" or using Validators but it is better to add validators to class -->
-            <p *ngIf="registerForm.controls.name.errors?.required"
+            <p *ngIf="registerForm.controls.name.touched&&registerForm.controls.name.dirty&&registerForm.controls.name.errors?.required"
                 class="text-red-400">
                 Field is required.
             </p>
-            <p *ngIf="registerForm.controls.name.errors?.minlength"
+            <p *ngIf="registerForm.controls.name.touched&&registerForm.controls.name.dirty&&registerForm.controls.name.errors?.minlength"
                 class="text-red-400">
                 The value you inputted is 
                 {{ registerForm.controls.name.errors?.minlength.actualLength }} 
