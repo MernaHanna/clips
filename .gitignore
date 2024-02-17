@@ -43,3 +43,7 @@ Thumbs.db
 
 # Extra files
 package-lock.json
+
+# rxjs folder files
+/rxjs/package-lock.json
+/rxjs/node_modules
