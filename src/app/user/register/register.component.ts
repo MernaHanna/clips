@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,6 +8,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  constructor(
+    private auth: AuthService
+  ){}
+
+  inSubmission = false;
+
   //angular may change the type of form control to abstract control
   // if we need to access the form controls we need to separate them to tackle this issue
   name= new FormControl('', [
@@ -49,11 +56,24 @@ export class RegisterComponent {
     phoneNumber: this.phoneNumber
   });
 
-  constructor() {}
-
-  register() {
+  async register() {
     this.showAlert = true;
     this.alertMsg = 'Please wait! Your account is being created.';
     this.alertColor = 'blue';
+    this.inSubmission = true;
+
+    try {
+      await this.auth.createUser(this.registerForm.value);
+    } catch (error) {
+      console.log(error);
+
+      this.alertMsg = 'An unexpected error occurred. Please try again later'
+      this.alertColor = 'red';
+      this.inSubmission = false
+      return
+    }
+
+    this.alertMsg = 'Success! Your account has been created.'
+    this.alertColor = 'green'
   }
 }

@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipLibCheck": true, // to install angularfire.. this setting stops typescript from type-checking files in the node_modules directory.
+    // however type-checking will remain enabled for code in the src directory so we may still benefit from type-checking.
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
